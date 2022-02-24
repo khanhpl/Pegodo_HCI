@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pegoda/MyLib/provider/google_sign_in_provider.dart';
+import 'package:provider/provider.dart';
 
 class AppSettingScreen extends StatefulWidget{
   @override
@@ -229,6 +231,9 @@ class _AppSettingScreenState extends State<AppSettingScreen> {
                         style: TextStyle(color: Color(0xff7B7B7B)),
                       ),
                       onPressed: () {
+                        final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+                        provider.logout();
+                        Navigator.pushNamed(context, '/');
                       },
                     ),
                   ),

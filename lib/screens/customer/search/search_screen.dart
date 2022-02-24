@@ -16,10 +16,10 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     var _pageHeight = MediaQuery.of(context).size.height;
     var _pageWidth = MediaQuery.of(context).size.width;
-    var _bgColor = Constants.bgColor;
+    var _primaryColor = Constants.primaryColor;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: _bgColor,
+        backgroundColor: _primaryColor,
         // automaticallyImplyLeading: false,
         toolbarHeight: _pageHeight * 0.1,
         title: Container(
@@ -126,7 +126,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 height: _pageHeight * 0.06,
                 child: TextButton(
                   style: TextButton.styleFrom(
-                    backgroundColor: _bgColor,
+                    backgroundColor: _primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -169,7 +169,6 @@ class _SearchScreenState extends State<SearchScreen> {
 
               //show result
               SizedBox(height: _pageHeight * 0.02),
-
 
             ],
           ),

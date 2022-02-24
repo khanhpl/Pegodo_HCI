@@ -253,5 +253,5 @@ class AppInforScreen extends StatelessWidget{
       ),
     );
   }
-  
+
 }

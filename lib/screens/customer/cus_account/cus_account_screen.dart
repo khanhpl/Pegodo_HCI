@@ -14,7 +14,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
   Widget build(BuildContext context) {
     var _pageHeight = MediaQuery.of(context).size.height;
     var _pageWidth = MediaQuery.of(context).size.width;
-    var _bgColor = Constants.bgColor;
+    var _primaryColor = Constants.primaryColor;
     // TODO: implement build
     return Material(
       child: Container(
@@ -100,19 +100,19 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
               AccountChoice(
                   icon: Icons.history,
                   choiceTitle: 'Lịch sử đặt lịch',
-                  choiceLink: ''),
+                  choiceLink: '/orderHistoryScreen'),
               SizedBox(height: _pageHeight * 0.03),
               AccountChoice(
                   icon: Icons.settings_outlined,
                   choiceTitle: 'Cài đặt chung',
-                  choiceLink: ''),
+                  choiceLink: '/appSettingScreen'),
               SizedBox(height: _pageHeight * 0.05),
               Container(
                 height: _pageHeight * 0.15,
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                   // color: Color.fromRGBO(91, 150, 16, 1.0),
-                  color: _bgColor,
+                  color: _primaryColor,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Row(

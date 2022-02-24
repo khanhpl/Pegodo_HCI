@@ -1,289 +1,439 @@
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import '../../MyLib/constants.dart' as Constants;
+import 'package:image_picker/image_picker.dart';
+import '../../MyLib/globals.dart' as globals;
+import 'package:flutter/services.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
-
+class RegisterScreen extends StatefulWidget{
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final myController = TextEditingController();
-  var choosen = "";
-  bool _showPass = false;
-  bool _showRetypePass = false;
-
+  bool _isGenderMale = false;
+  bool _isGenderFemale = false;
+  late File imageFile;
+  bool _picIsChose = false;
   @override
   Widget build(BuildContext context) {
-    var _pageHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
-    var _pageWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    var _bgColor = Constants.bgColor;
-
+    // TODO: implement build
+    var size = MediaQuery.of(context).size;
     return Material(
       child: Container(
-        width: _pageWidth,
-        height: _pageHeight,
-        color: _bgColor,
-        padding: EdgeInsets.fromLTRB(
-            _pageWidth * 0.15, 0, _pageWidth * 0.15, 0),
-        alignment: Alignment.center,
+        color: Colors.white,
+        width: size.width,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/Pegoda.png',
-                width: _pageWidth * 0.7,
-                height: _pageHeight * 0.3,),
-              SizedBox(height: _pageHeight * 0.03,),
               Container(
-                child: Text(
-                  'Đăng ký',
-                  style: TextStyle(
-                    fontSize: _pageHeight * 0.04,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-              SizedBox(height: _pageHeight * 0.025,),
-              Container(
-                height: _pageHeight * 0.06,
+                width: size.width,
+                height: size.height * 0.12,
                 alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Tài khoản',
-                    hintStyle: TextStyle(
-                      fontSize: _pageHeight * 0.02,
-                      color: Colors.black26,
+                child: Container(
+                  child: IconButton(
+                    onPressed: () {
+                    },
+                    icon: ImageIcon(
+                      AssetImage('assets/cus/account_screen/cancel.png'),
+                      size: size.height * 0.04,
+                      color: Color(0xFFBDBDBD),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: _pageHeight * 0.025),
-              Container(
-                height: _pageHeight * 0.06,
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-
-                ),
-                child: TextField(
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Điện thoại',
-                    hintStyle: TextStyle(
-                      fontSize: _pageHeight * 0.02,
-                      color: Colors.black26,
-                    ),
-                  ),
+              Text(
+                'Thông tin tài khoản',
+                style: TextStyle(
+                  color: Color(0xff333333),
+                  fontWeight: FontWeight.w500,
+                  fontSize: size.height * 0.032,
                 ),
               ),
-              SizedBox(height: _pageHeight * 0.025,),
+              SizedBox(height: size.height * 0.03),
               Container(
-                height: _pageHeight * 0.06,
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextField(
-                  decoration: InputDecoration.collapsed(
-                    hintText: 'Email',
-                    hintStyle: TextStyle(
-                      fontSize: _pageHeight * 0.02,
-                      color: Colors.black26,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: _pageHeight * 0.025,),
-              Container(
-                height: _pageHeight * 0.06,
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: _pageWidth * 0.5,
-                      child: TextField(
-                        controller: myController,
-                        obscureText: !_showPass,
-                        decoration: InputDecoration.collapsed(
-                          hintText: 'Mật khẩu',
-                          hintStyle: TextStyle(
-                            fontSize: _pageHeight * 0.02,
-                            color: Colors.black26,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: IconButton(
-                          icon: !_showPass
-                              ? ImageIcon(
-                            AssetImage('assets/welcome/eye.png'),
-                            color: Colors.black26,
-                            size: _pageHeight * 0.05,
-                          )
-                              : ImageIcon(
-                            AssetImage('assets/welcome/eye.png'),
-                            color: Colors.blue,
-                            size: _pageHeight * 0.05,
-                          ),
-                          onPressed: () {
-                            showPass();
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: _pageHeight * 0.025,),
-              Container(
-                height: _pageHeight * 0.06,
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: _pageWidth * 0.5,
-                      child: TextField(
-                        obscureText: !_showRetypePass,
-                        decoration: InputDecoration.collapsed(
-                          hintText: 'Xác nhận Mật khẩu ',
-                          hintStyle: TextStyle(
-                            fontSize: _pageHeight * 0.02,
-                            color: Colors.black26,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: IconButton(
-                          icon: !_showRetypePass
-                              ? ImageIcon(
-                            AssetImage('assets/welcome/eye.png'),
-                            color: Colors.black26,
-                            size: _pageHeight * 0.05,
-                          )
-                              : ImageIcon(
-                            AssetImage('assets/welcome/eye.png'),
-                            color: Colors.blue,
-                            size: _pageHeight * 0.05,
-                          ),
-                          onPressed: () {
-                            showRetypePass();
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(height: _pageHeight * 0.03,),
-              Container(
-                width: _pageWidth * 0.5,
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.black87,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                  onPressed: (){
-                    Navigator.pushNamed(context, '/loginScreen');
+                child: FlatButton(
+                  onPressed: () {
+                    _getFromGallery();
                   },
-                  child: Text(
-                    'Đăng ký',
-                    style: TextStyle(
-                      fontSize: _pageHeight * 0.025,
+                  child: globals.isAvatarChecked == false
+                      ? Container(
+                    width: size.height * 0.12,
+                    height: size.height * 0.12,
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.only(bottom: size.height * 0.01),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/ic_pegoda.png'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.add_a_photo,
                       color: Colors.white,
-                      fontWeight: FontWeight.w400,
+                    ),
+                  )
+                      : Container(
+                    width: size.height * 0.12,
+                    height: size.height * 0.12,
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.only(bottom: size.height * 0.01),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: FileImage(globals.avatarFile),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: Icon(
+                      Icons.add_a_photo,
+                      color: Colors.white,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: _pageHeight * 0.015,),
+              SizedBox(height: size.height * 0.03),
               Container(
-                child: Row(
+                margin: EdgeInsets.fromLTRB(
+                    size.width * 0.03, 0.0, size.width * 0.03, 0.0),
+                padding: EdgeInsets.fromLTRB(size.width * 0.03,
+                    size.height * 0.03, size.width * 0.03, size.height * 0.03),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Đã có mật khẩu?',
+                      'Giới tính',
                       style: TextStyle(
-                        fontSize: _pageHeight * 0.02,
+                        color: Color(0xff333333),
+                        fontSize: size.height * 0.02,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Spacer(),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/loginScreen');
-                      },
-                      child: Text(
-                        'Đăng nhập',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: _pageHeight * 0.02,
-                          fontWeight: FontWeight.w400,
+                    Container(
+                      child: Row(
+                        children: [
+                          Checkbox(
+                            value: _isGenderMale,
+                            onChanged: (value) {
+                              setState(() {
+                                _isGenderMale = true;
+                                _isGenderFemale = false;
+                              });
+                            },
+                            checkColor: Color(0xff5B9610),
+                            activeColor: Colors.white,
+                          ),
+                          Text(
+                            'Nam',
+                            style: TextStyle(
+                              color: Color(0xff333333),
+                              fontSize: size.height * 0.02,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          SizedBox(width: size.width * 0.1),
+                          Checkbox(
+                            value: _isGenderFemale,
+                            onChanged: (value) {
+                              setState(() {
+                                _isGenderMale = false;
+                                _isGenderFemale = true;
+                              });
+                            },
+                            checkColor: Color(0xff5B9610),
+                            activeColor: Colors.white,
+                          ),
+                          Text(
+                            'Nữ',
+                            style: TextStyle(
+                              color: Color(0xff333333),
+                              fontSize: size.height * 0.02,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.03),
+                    Text(
+                      'Tên hiển thị',
+                      style: TextStyle(
+                        color: Color(0xff333333),
+                        fontSize: size.height * 0.02,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: size.height * 0.06,
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.03, right: size.width * 0.03),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Color(0xffDADADA)),
+                      ),
+                      child: TextField(
+                        controller: TextEditingController(text: 'khanhpl'),
+                        decoration: InputDecoration.collapsed(
+                          hintText: '',
+                          hintStyle: TextStyle(
+                            fontSize: size.height * 0.02,
+                            color: Color(0xff666666),
+                          ),
                         ),
                       ),
                     ),
+
+                    SizedBox(height: size.height * 0.03),
+                    Container(
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Email ',
+                            style: TextStyle(
+                              color: Color(0xff333333),
+                              fontSize: size.height * 0.02,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            children: [
+                            ],
+                          ),
+                        )),
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: size.height * 0.06,
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.03, right: size.width * 0.03),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Color(0xffDADADA)),
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'khanhpl@gmail.com',
+                          hintStyle: TextStyle(
+                            fontSize: size.height * 0.02,
+                            color: Color(0xffDADADA),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.03),
+                    Container(
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'Số điện thoại ',
+                          style: TextStyle(
+                            color: Color(0xff333333),
+                            fontSize: size.height * 0.02,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          children: [],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: size.height * 0.06,
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.03, right: size.width * 0.03),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Color(0xffDADADA)),
+                      ),
+                      child: TextField(
+                        keyboardType: TextInputType.phone,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        decoration: InputDecoration.collapsed(
+                          hintText: '0900 123 456',
+                          hintStyle: TextStyle(
+                            fontSize: size.height * 0.02,
+                            color: Color(0xffDADADA),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.03),
+                    Container(
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'Số điện thoại ',
+                          style: TextStyle(
+                            color: Color(0xff333333),
+                            fontSize: size.height * 0.02,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          children: [],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: size.height * 0.06,
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.03, right: size.width * 0.03),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Color(0xffDADADA)),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              keyboardType: TextInputType.phone,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              decoration: InputDecoration.collapsed(
+                                hintText: 'Nhập số điện thoại',
+                                hintStyle: TextStyle(
+                                  fontSize: size.height * 0.02,
+                                  color: Color(0xff666666),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(
+                                size.width * 0.01,
+                                size.height * 0.005,
+                                size.width * 0.01,
+                                size.height * 0.005),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                              border: Border.all(color: Color(0xffDADADA)),
+                            ),
+                            child: FlatButton(
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {},
+                              child: Text(
+                                'Kích hoạt',
+                                style: TextStyle(
+                                  color: Color(0xff666666),
+                                  fontSize: size.height * 0.015,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: size.height * 0.06,
+                      padding: EdgeInsets.only(
+                          left: size.width * 0.03, right: size.width * 0.03),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Color(0xffDADADA)),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              decoration: InputDecoration.collapsed(
+                                hintText: 'Nhập mã bạn nhận được',
+                                hintStyle: TextStyle(
+                                  fontSize: size.height * 0.02,
+                                  color: Color(0xff666666),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(
+                                size.width * 0.01,
+                                size.height * 0.005,
+                                size.width * 0.01,
+                                size.height * 0.005),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                              border: Border.all(color: Color(0xff5B9610)),
+                            ),
+                            child: FlatButton(
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {
+                              },
+                              child: Text(
+                                'Xác nhận',
+                                style: TextStyle(
+                                  color: Color(0xff666666),
+                                  fontSize: size.height * 0.015,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //end box----------------------------------------------------------
                   ],
                 ),
-
               ),
-              SizedBox(height: _pageHeight * 0.3),
+              SizedBox(height: size.height * 0.06),
+              Container(
+                width: size.width * 0.75,
+                height: size.height * 0.06,
+                decoration: BoxDecoration(
+                  color: Color(0xff333333),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: FlatButton(
+                  child: Text(
+                    'Xác nhận',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: size.height * 0.024,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/cusMain');
+                  },
+                ),
+              ),
+              SizedBox(height: size.height * 0.4),
             ],
           ),
         ),
       ),
     );
   }
-
-  void showPass() async {
-    setState(() {
-      if (_showPass == true) {
-        _showPass = false;
-      } else {
-        _showPass = true;
-      }
-    });
-  }
-  void showRetypePass() async {
-    setState(() {
-      if (_showRetypePass == true) {
-        _showRetypePass = false;
-      } else {
-        _showRetypePass = true;
-      }
-    });
+  _getFromGallery() async {
+    PickedFile? pickedFile = await ImagePicker().getImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      setState(() {
+        imageFile = File(pickedFile.path);
+        _picIsChose = true;
+        globals.isAvatarChecked = true;
+        globals.avatarFile = imageFile;
+      });
+    }
   }
 }
-
