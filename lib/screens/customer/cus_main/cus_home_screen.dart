@@ -136,7 +136,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Trung tâm \ngần nhất',
+                              'Trung tâm \nnổi bật',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontWeight: FontWeight.w400),
                             ),
@@ -167,7 +167,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Dịch vụ \ngần nhất',
+                              'Dịch vụ \nnổi bật',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontWeight: FontWeight.w400),
                             ),
@@ -181,9 +181,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                         children: [
                           Container(
                             child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/questionScreen');
-                              },
+                              onPressed: () {},
                               child: Icon(
                                 Icons.question_answer,
                                 size: _pageWidth * 0.3 * 0.33,
@@ -272,7 +270,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                   ),
                 ),
 
-                SizedBox(height: _pageHeight * 0.1),
+                SizedBox(height: _pageHeight * 0.02),
               ],
             ),
           ),
