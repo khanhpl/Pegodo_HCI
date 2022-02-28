@@ -302,7 +302,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                     SizedBox(height: _pageHeight * 0.03),
                     Container(
                       child: Text(
-                        'Kham benh',
+                        'Khám bệnh',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.w400),
                       ),
@@ -322,7 +322,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                     SizedBox(height: _pageHeight * 0.03),
                     Container(
                       child: Text(
-                        'cap cuu 24/7',
+                        'Cấp cứu ',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontWeight: FontWeight.w400),
                       ),
@@ -343,7 +343,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       SizedBox(height: _pageHeight * 0.03),
                       Container(
                         child: Text(
-                          'dich vu khac',
+                          'Dịch vụ khác',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontWeight: FontWeight.w400),
                         ),
