@@ -1,9 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pegoda/MyLib/provider/google_sign_in_provider.dart';
-import 'package:pegoda/controllers/customer_main.dart';
-import 'package:provider/provider.dart';
 import '../../MyLib/constants.dart' as Constants;
 
 class LoginScreen extends StatefulWidget {
@@ -252,6 +248,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // ImageIcon(
+                      //   AssetImage(
+                      //       'assets/welcome/ggicon2.png'),
+                      //   size: _pageHeight * 0.04,
+                      // ),
                       Image.asset('assets/welcome/ggicon2.png',
                           width: _pageHeight * 0.04),
                       Text(
@@ -264,9 +265,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  onPressed: () {
-                    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
-                  },
+                  onPressed: () {},
                 ),
               ),
               SizedBox(height: _pageHeight * 0.1),

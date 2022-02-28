@@ -3,10 +3,10 @@ import 'package:pegoda/MyLib/class/PetcarePlace.dart';
 import 'package:pegoda/MyLib/class/coupon.dart';
 import 'package:pegoda/MyLib/class/pcc.dart';
 import 'package:pegoda/MyLib/class/pet.dart';
-import 'package:pegoda/screens/customer/cus_main/show_coupon_on_home_screen.dart';
-import 'package:pegoda/screens/customer/cus_main/show_pcc_item.dart';
+import 'package:pegoda/MyLib/models/show_coupon_on_home_screen.dart';
+import 'package:pegoda/MyLib/models/show_pcc_item.dart';
 import 'package:pegoda/screens/customer/cus_main/up_nav_bar.dart';
-import 'package:pegoda/screens/customer/pet/show_pet_item.dart';
+import 'package:pegoda/MyLib/models/show_pet_item.dart';
 import '../../../MyLib/constants.dart' as Constants;
 import 'package:pegoda/screens/customer/cus_main/PetCare.dart';
 import 'package:carousel_pro/carousel_pro.dart';
@@ -22,7 +22,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
   Widget build(BuildContext context) {
     var _pageHeight = MediaQuery.of(context).size.height;
     var _pageWidth = MediaQuery.of(context).size.width;
-    var _bgColor = Constants.bgColor;
+
     List<PCC> _pccList = [
       PCC(
           PCCName: 'Dog Paradise',
@@ -66,23 +66,29 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
     ];
     List<Coupon> _couponList = [
       Coupon(
-          couponImage: 'assets/cus/main_screen/coupon1.png',
-          couponContent: 'Trọn gói chăm sóc chỉ 199k.'),
+        couponImage: 'assets/cus/main_screen/coupon1.png',
+        couponContent: 'Trọn gói chăm sóc chỉ 199k.',
+        couponValue: '199k',
+        center: 'Pet Box',
+      ),
       Coupon(
-          couponImage: 'assets/cus/main_screen/coupon2.jpg',
-          couponContent: 'Grooming spa ưu đãi lên đến 45%'),
+        couponImage: 'assets/cus/main_screen/coupon2.jpg',
+        couponContent: 'Grooming spa ưu đãi lên đến 45%',
+        couponValue: '45%',
+        center: 'Grooming',
+      ),
       Coupon(
-          couponImage: 'assets/cus/main_screen/coupon3.jpg',
-          couponContent: 'Ú tim tìm boss ưu đã lên đến 50%'),
+        couponImage: 'assets/cus/main_screen/coupon3.jpg',
+        couponContent: 'Ú tim tìm boss ưu đã lên đến 50%',
+        couponValue: '50%',
+        center: 'Boss Ú',
+      ),
       Coupon(
-          couponImage: 'assets/cus/main_screen/coupon4.jpg',
-          couponContent: 'Sen ơi ở đây có giảm giá nhà gỗ lofe pet nè'),
-      Coupon(
-          couponImage: 'assets/cus/main_screen/coupon5.jpg',
-          couponContent: 'Trải nghiệm siêu tiết kiệm'),
-      Coupon(
-          couponImage: 'assets/cus/main_screen/coupon6.jpg',
-          couponContent: 'Sale tết lên đến 50%'),
+        couponImage: 'assets/cus/main_screen/coupon4.jpg',
+        couponContent: 'Sen ơi ở đây có giảm giá 40% nhà gỗ lofe pet nè',
+        couponValue: '40%',
+        center: 'Lofe',
+      ),
     ];
     return Scaffold(
       appBar: UpAppBar(context),
@@ -139,7 +145,8 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       //Trung tâm nổi bật
                       Column(
                         children: [
-                          TextButton(
+
+                          FlatButton(
                             onPressed: () {
                               Navigator.pushNamed(
                                   context, '/neareastPCCScreen');
@@ -149,6 +156,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                               height: _pageWidth * 0.3 * 0.33,
                               width: _pageWidth * 0.3 * 0.33,
                             ),
+                            padding: EdgeInsets.all(0),
                           ),
                           SizedBox(height: _pageHeight * 0.03),
                           Container(
@@ -245,6 +253,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                 ),
                 //Thú cưng của bạn
                 SizedBox(height: _pageHeight * 0.03),
+
                 Row(children: [
                   Container(
                     child: Text(
@@ -265,6 +274,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
 
                 SizedBox(height: _pageHeight * 0.03),
                 Row(children: [
+
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -350,6 +360,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       ),
                     ]),
                   ),
+
                 ]),
                 SizedBox(height: _pageHeight * 0.03),
                 Row(children: [
@@ -412,7 +423,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                   )
                 ]),
                 Container(
-                  height: _pageHeight * 0.32,
+                  height: _pageHeight * 0.35,
                   child: ListView.separated(
                     // physics: NeverScrollableScrollPhysics(),
                     // shrinkWrap: true,
