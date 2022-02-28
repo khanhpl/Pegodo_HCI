@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:pegoda/MyLib/class/pet.dart';
-import 'package:pegoda/screens/customer/pet/show_pet_item.dart';
+import 'package:pegoda/MyLib/models/show_pet_item.dart';
 import '../../../MyLib/constants.dart' as Constants;
 
 class PetScreen extends StatelessWidget {

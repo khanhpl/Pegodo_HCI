@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pegoda/MyLib/class/pcc.dart';
-import 'package:pegoda/screens/customer/cus_main/show_pcc_item.dart';
+import 'package:pegoda/MyLib/models/show_pcc_item.dart';
 import '../../../MyLib/constants.dart' as Constants;
 
 class NearestPCCScreen extends StatefulWidget{

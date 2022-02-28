@@ -12,7 +12,7 @@ class NotificationScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: _primaryColor,
         automaticallyImplyLeading: false,
-        toolbarHeight: _pageHeight * 0.1,
+        toolbarHeight: _pageHeight * 0.08,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
