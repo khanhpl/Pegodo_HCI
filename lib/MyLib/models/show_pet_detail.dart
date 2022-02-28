@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pegoda/MyLib/class/pet.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../MyLib/globals.dart' as globals;
+import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
 
 class ShowPetDetail extends StatefulWidget{
@@ -75,8 +75,7 @@ class _ShowPetDetailState extends State<ShowPetDetail> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: AssetImage(
-                            'assets/ic_pegoda.png'),
+                        image: NetworkImage(pet.PetImage),
                         fit: BoxFit.fill,
                       ),
                     ),

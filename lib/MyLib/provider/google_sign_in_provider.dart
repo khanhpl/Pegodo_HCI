@@ -13,7 +13,6 @@ class GoogleSignInProvider extends ChangeNotifier {
     final googleUser = await googleSignIn.signIn();
 
     if (googleUser == null) {
-      print('ko co du lieu');
       return;
     }
     _user = googleUser;

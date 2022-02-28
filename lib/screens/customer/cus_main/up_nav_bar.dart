@@ -1,47 +1,51 @@
+
 import 'package:flutter/material.dart';
 import '../../../MyLib/constants.dart' as Constants;
 
 AppBar UpAppBar(context) {
   var _pageWidth = MediaQuery.of(context).size.width;
   var _pageHeight = MediaQuery.of(context).size.height;
-  var _bgColor = Constants.bgColor;
+  var _primaryColor = Constants.primaryColor;
 
   return AppBar(
-    backgroundColor: _bgColor,
+    backgroundColor: _primaryColor,
     // automaticallyImplyLeading: false,
-    toolbarHeight: _pageHeight * 0.1,
+    toolbarHeight: _pageHeight * 0.08,
     leading: Container(
-      height: _pageHeight * 0.03,
+      margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/Pegoda.png'),
+          image: AssetImage('assets/app_ic.png'),
           fit: BoxFit.fill,
         ),
       ),
     ),
     title: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-          Container(
-            width: _pageWidth*0.6,
-            height: _pageHeight*0.03,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/PegodaName.png'),
-                fit: BoxFit.fill,
-              ),
+        Container(
+          child: Text(
+            'Pegoda',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: _pageHeight*0.03,
             ),
           ),
-
+        ),
       ],
     ),
 
     actions: [
       IconButton(
-        onPressed: (){
-          Navigator.pushNamed(context, '/notificationScreen');
+        onPressed: () {
+          Navigator.pushNamed(context, '/searchScreen');
         },
-        icon: Icon(Icons.notifications,color: Color(0xFF7289DA),),
+        icon: Icon(
+          Icons.search_sharp,
+          color: Colors.white,
+          size: _pageHeight * 0.05,
+        ),
       ),
     ],
   );
