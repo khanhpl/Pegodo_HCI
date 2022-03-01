@@ -10,6 +10,7 @@ class NearestPCCScreen extends StatefulWidget{
 
 class _NearestPCCScreenState extends State<NearestPCCScreen> {
   var _primaryColor = Constants.primaryColor;
+  var _bgColor = Constants.bgColor;
   List<PCC> _pccList = [
     PCC(
         PCCName: 'Dog Paradise',
