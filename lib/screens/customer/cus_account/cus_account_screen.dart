@@ -16,172 +16,155 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
     var _pageWidth = MediaQuery.of(context).size.width;
     var _primaryColor = Constants.primaryColor;
     // TODO: implement build
-    return Material(
-      child: Container(
-        padding:
-            EdgeInsets.only(left: _pageWidth * 0.03, right: _pageHeight * 0.03),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: _pageHeight * 0.05),
-              Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                      child: IconButton(
-                        onPressed: () {
-                          // Navigator.pop(context);
-                          Navigator.pushNamed(context, '/cusMain');
-                        },
-                        icon: ImageIcon(
-                          AssetImage('assets/cus/account_screen/cancel.png'),
-                          size: _pageHeight * 0.04,
-                          color: Color(0xFFBDBDBD),
-                        ),
-                      ),
-                    ),
-                    Spacer(),
-                    Text(
-                      'Chào, Khánh Phan',
-                      textAlign: TextAlign.center,
-                    ),
-                    Spacer(),
-                    globals.isAvatarChecked == false
-                        ? Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: AssetImage('assets/ic_pegoda.png'),
-                                fit: BoxFit.fill,
-                              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Cá nhân"),
+        backgroundColor: Constants.primaryColor,
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+      ),
+      body: Container(
+        color: Constants.bgColor,
+        child: Column(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: SizedBox(
+                      width: 90,
+                      height: 90,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        overflow: Overflow.visible,
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: AssetImage(
+                                "assets/cus/account_screen/profileImage.jpg"),
+                          ),
+                          Positioned(
+                            right: -10,
+                            bottom: 0,
+                            child: SizedBox(
+                              width: 36,
+                              height: 36,
+                              child: TextButton(
+                                  style: flatButtonStyle,
+                                  onPressed: () {},
+                                  child: Image.asset(
+                                      "assets/cus/account_screen/iconGooglePlus.png")),
                             ),
-                            width: _pageHeight * 0.07,
-                            height: _pageHeight * 0.07,
                           )
-                        : Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: FileImage(globals.avatarFile),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            width: _pageHeight * 0.07,
-                            height: _pageHeight * 0.07,
-                          ),
-                  ],
-                ),
-              ),
-              SizedBox(height: _pageHeight * 0.03),
-              Text(
-                'Tài khoản',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: _pageHeight * 0.028,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(height: _pageHeight * 0.02),
-              AccountChoice(
-                  icon: Icons.account_box_rounded,
-                  choiceTitle: 'Cài đặt tài khoản',
-                  choiceLink: '/personalSettingScreen'),
-              SizedBox(height: _pageHeight * 0.03),
-              AccountChoice(
-                  icon: Icons.pets,
-                  choiceTitle: 'Thú cưng',
-                  choiceLink: '/petScreen'),
-              SizedBox(height: _pageHeight * 0.03),
-              AccountChoice(
-                  icon: Icons.history,
-                  choiceTitle: 'Lịch sử đặt lịch',
-                  choiceLink: '/orderHistoryScreen'),
-              SizedBox(height: _pageHeight * 0.03),
-              AccountChoice(
-                  icon: Icons.settings_outlined,
-                  choiceTitle: 'Cài đặt chung',
-                  choiceLink: '/appSettingScreen'),
-              SizedBox(height: _pageHeight * 0.05),
-              Container(
-                height: _pageHeight * 0.15,
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  // color: Color.fromRGBO(91, 150, 16, 1.0),
-                  color: _primaryColor,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      height: _pageHeight * 0.1,
-                      width: _pageWidth * 0.2,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/Pegoda.png'),
-                          fit: BoxFit.fitHeight,
-                        ),
+                        ],
                       ),
                     ),
-                    Spacer(),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          'Đánh giá app Pegoda',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 5.0),
-                        RatingBar.builder(
-                          itemSize: 20.0,
-                          initialRating: 0,
-                          minRating: 1,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          itemCount: 5,
-                          itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                          itemBuilder: (context, _) => Icon(
-                            Icons.star,
-                            color: Color(0xFFBDBDBD),
-                            // size: 10.0,
-                          ),
-                          onRatingUpdate: (rating) {},
-                        )
-                      ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Hieu",
+                    style: TextStyle(
+                      fontSize: 25,
                     ),
-                    Spacer(),
-                    Container(
-                      height: _pageHeight * 0.05,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Constants.boxColor,
+                          primary: Colors.black87,
+                          padding: EdgeInsets.all(15)),
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Text(
+                            "Thông tin cá nhân",
+                          )),
+                          Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.black26,
+                            size: 20,
+                          )
+                        ],
+                      )),
+                  TextButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Constants.boxColor,
+                          primary: Colors.black87,
+                          padding: EdgeInsets.all(15)),
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Text(
+                            "ảnh của tôi",
+                          )),
+                          Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.black26,
+                            size: 20,
+                          )
+                        ],
+                      )),
+                  SizedBox(
+                    height: 45,
+                  ),
+                  TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Constants.boxColor,
+                        primary: Colors.black87,
+                        padding: EdgeInsets.all(15),
                       ),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Đánh giá ngay',
-                          style:
-                              TextStyle(color: Colors.black45, fontSize: 10.0),
-                          textAlign: TextAlign.center,
-                        ),
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Text(
+                            "Quản lý thú cưng",
+                          )),
+                          Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.black26,
+                            size: 20,
+                          )
+                        ],
+                      )),
+                  SizedBox(
+                    height: 45,
+                  ),
+                  TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Constants.boxColor,
+                        primary: Colors.red,
+                        padding: EdgeInsets.all(15),
                       ),
-                    ),
-                  ],
-                ),
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Expanded(
+                              child: Text(
+                            "Đăng xuất",
+                            textAlign: TextAlign.center,
+                          )),
+                        ],
+                      )),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
+
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    padding: EdgeInsets.zero,
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(50)),
+        side: BorderSide(color: Colors.white)),
+  );
 }
