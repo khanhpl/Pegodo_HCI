@@ -48,7 +48,7 @@ class _ShowServiceItemState extends State<ShowServiceItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Pet Homies',
+                  'Tắm chó - Dog Bathing',
                   style: TextStyle(
                     fontSize: _pageHeight * 0.022,
                     fontWeight: FontWeight.w500,
