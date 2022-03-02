@@ -18,7 +18,14 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cá nhân"),
+        title: Text(
+          'Cá nhân',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: _pageHeight * 0.03,
+          ),
+        ),
         backgroundColor: Constants.primaryColor,
         automaticallyImplyLeading: false,
         centerTitle: true,
@@ -39,10 +46,29 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                         fit: StackFit.expand,
                         overflow: Overflow.visible,
                         children: [
-                          CircleAvatar(
-                            backgroundImage: AssetImage(
-                                "assets/cus/account_screen/profileImage.jpg"),
-                          ),
+                          globals.isAvatarChecked == false
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: AssetImage('assets/ic_pegoda.png'),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  width: _pageHeight * 0.07,
+                                  height: _pageHeight * 0.07,
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: FileImage(globals.avatarFile),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  width: _pageHeight * 0.07,
+                                  height: _pageHeight * 0.07,
+                                ),
                           Positioned(
                             right: -10,
                             bottom: 0,
@@ -74,15 +100,23 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                   ),
                   TextButton(
                       style: TextButton.styleFrom(
-                          backgroundColor: Constants.boxColor,
-                          primary: Colors.black87,
-                          padding: EdgeInsets.all(15)),
-                      onPressed: () {},
+                        backgroundColor: Constants.boxColor,
+                        primary: Colors.black87,
+                        padding: EdgeInsets.all(15),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/personalSettingScreen');
+                      },
                       child: Row(
                         children: [
                           Expanded(
                               child: Text(
                             "Thông tin cá nhân",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: _pageHeight * 0.028,
+                              fontWeight: FontWeight.w500,
+                            ),
                           )),
                           Icon(
                             Icons.arrow_forward_ios_rounded,
@@ -91,17 +125,27 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                           )
                         ],
                       )),
+                  SizedBox(
+                    height: 45,
+                  ),
                   TextButton(
                       style: TextButton.styleFrom(
                           backgroundColor: Constants.boxColor,
                           primary: Colors.black87,
                           padding: EdgeInsets.all(15)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/orderHistoryScreen');
+                      },
                       child: Row(
                         children: [
                           Expanded(
                               child: Text(
-                            "ảnh của tôi",
+                            'Lịch sử đặt lịch',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: _pageHeight * 0.028,
+                              fontWeight: FontWeight.w500,
+                            ),
                           )),
                           Icon(
                             Icons.arrow_forward_ios_rounded,
@@ -119,12 +163,19 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                         primary: Colors.black87,
                         padding: EdgeInsets.all(15),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/petScreen');
+                      },
                       child: Row(
                         children: [
                           Expanded(
                               child: Text(
                             "Quản lý thú cưng",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: _pageHeight * 0.028,
+                              fontWeight: FontWeight.w500,
+                            ),
                           )),
                           Icon(
                             Icons.arrow_forward_ios_rounded,
@@ -149,6 +200,11 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                               child: Text(
                             "Đăng xuất",
                             textAlign: TextAlign.center,
+                                style: TextStyle(
+
+                                  fontSize: _pageHeight * 0.028,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           )),
                         ],
                       )),
