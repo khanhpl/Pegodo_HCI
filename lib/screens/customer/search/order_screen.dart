@@ -14,7 +14,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   List<Pet> _petList = Globals.petList;
-  var paymentValue= "Tiền mặt";
+  var paymentValue;
   List _listPayment = Globals.listPayment;
 
   @override
