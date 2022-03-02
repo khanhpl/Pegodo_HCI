@@ -72,12 +72,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   ),
                 ),
               ),
-              Text(
-                'Lịch sử đặt lịch',
-                style: TextStyle(
-                  color: Color(0xff333333),
-                  fontWeight: FontWeight.w500,
-                  fontSize: size.height * 0.032,
+              SizedBox(
+                width: size.width * 0.2,
+                child: Image(
+                  image: AssetImage("assets/cus/account_screen/orders.png"),
+
                 ),
               ),
               ListView.separated(

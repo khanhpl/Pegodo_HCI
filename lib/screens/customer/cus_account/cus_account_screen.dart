@@ -36,15 +36,15 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
           children: [
             Center(
               child: Column(
+
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 5),
                     child: SizedBox(
                       width: 90,
                       height: 90,
                       child: Stack(
-                        fit: StackFit.expand,
-                        overflow: Overflow.visible,
+                        clipBehavior: Clip.none, fit: StackFit.expand,
                         children: [
                           globals.isAvatarChecked == false
                               ? Container(
@@ -87,7 +87,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Text(
                     "Hieu",
@@ -96,7 +96,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   TextButton(
                       style: TextButton.styleFrom(
@@ -114,7 +114,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                             "Thông tin cá nhân",
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: _pageHeight * 0.028,
+                              fontSize: _pageHeight * 0.023,
                               fontWeight: FontWeight.w500,
                             ),
                           )),
@@ -126,7 +126,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                         ],
                       )),
                   SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   TextButton(
                       style: TextButton.styleFrom(
@@ -143,7 +143,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                             'Lịch sử đặt lịch',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: _pageHeight * 0.028,
+                              fontSize: _pageHeight * 0.023,
                               fontWeight: FontWeight.w500,
                             ),
                           )),
@@ -155,7 +155,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                         ],
                       )),
                   SizedBox(
-                    height: 45,
+                    height: 25,
                   ),
                   TextButton(
                       style: TextButton.styleFrom(
@@ -173,7 +173,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                             "Quản lý thú cưng",
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: _pageHeight * 0.028,
+                              fontSize: _pageHeight * 0.023,
                               fontWeight: FontWeight.w500,
                             ),
                           )),
@@ -185,7 +185,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                         ],
                       )),
                   SizedBox(
-                    height: 45,
+                    height: 55,
                   ),
                   TextButton(
                       style: TextButton.styleFrom(
@@ -202,13 +202,18 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                             textAlign: TextAlign.center,
                                 style: TextStyle(
 
-                                  fontSize: _pageHeight * 0.028,
+                                  fontSize: _pageHeight * 0.023,
                                   fontWeight: FontWeight.w500,
                                 ),
                           )),
                         ],
                       )),
+                  SizedBox(
+                    height: 100,
+                  ),
+
                 ],
+
               ),
             ),
           ],

@@ -187,7 +187,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Đơn đặt hàng',
+                              'Lịch sử đặt hàng',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontWeight: FontWeight.w400),
                             ),
