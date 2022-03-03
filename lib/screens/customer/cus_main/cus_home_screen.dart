@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pegoda/MyLib/class/PetcarePlace.dart';
 import 'package:pegoda/MyLib/class/coupon.dart';
 import 'package:pegoda/MyLib/class/pcc.dart';
 import 'package:pegoda/MyLib/class/pet.dart';
 import 'package:pegoda/MyLib/models/show_coupon_on_home_screen.dart';
 import 'package:pegoda/MyLib/models/show_pcc_item.dart';
 import 'package:pegoda/screens/customer/cus_main/up_nav_bar.dart';
-import 'package:pegoda/MyLib/models/show_pet_item.dart';
 import '../../../MyLib/constants.dart' as Constants;
-import 'package:pegoda/screens/customer/cus_main/PetCare.dart';
+import '../../../MyLib/globals.dart' as Globals;
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:pegoda/MyLib/class/PetcarePlace.dart';
 
 class CusHomeScreen extends StatefulWidget {
   @override
@@ -23,73 +20,10 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
     var _pageHeight = MediaQuery.of(context).size.height;
     var _pageWidth = MediaQuery.of(context).size.width;
 
-    List<PCC> _pccList = [
-      PCC(
-          PCCName: 'Dog Paradise',
-          PCCImage:
-              'https://petee.vn/wp-content/uploads/2020/11/dogparadise-logo.png',
-          PCCService: 'Chăm lo cho boss',
-          PCCRating: '4.9',
-          PCCDistance: '5km'),
-      PCC(
-          PCCName: 'Petcare VN',
-          PCCImage:
-              'https://petcare.vn/wp-content/uploads/2016/05/petcare_logo-1.png',
-          PCCService: "Y tế thú cưng",
-          PCCRating: '4.6',
-          PCCDistance: '10.4km'),
-      PCC(
-          PCCName: 'Thú y pet pro',
-          PCCImage:
-              'https://static.topcv.vn/company_logos/pbEIzKqznn7PKiNaVmDPyCZwgpF552sK_1639462508____b229f382460f151f1fb777962db4773a.png',
-          PCCService: 'Bệnh viện thú',
-          PCCRating: '4.4',
-          PCCDistance: '1.6km'),
-    ];
-    List<Pet> _petList = [
-      Pet(
-          PetID: "Pet1",
-          PetName: "Con gà",
-          PetType: "Chó pug",
-          PetGender: true,
-          PetStatus: "Mập",
-          PetImage:
-              "https://i.pinimg.com/originals/23/59/7e/23597eae81350a4705644c58bdad7f6b.jpg"),
-      Pet(
-          PetID: "Pet2",
-          PetName: "Con vịt",
-          PetType: "Mèo",
-          PetGender: false,
-          PetStatus: "Mập",
-          PetImage:
-              "https://i.pinimg.com/564x/7b/a1/b6/7ba1b6556719b4b358e3b86e6c24b30f.jpg"),
-    ];
-    List<Coupon> _couponList = [
-      Coupon(
-        couponImage: 'assets/cus/main_screen/coupon1.png',
-        couponContent: 'Trọn gói chăm sóc chỉ 199k.',
-        couponValue: '199k',
-        center: 'Pet Box',
-      ),
-      Coupon(
-        couponImage: 'assets/cus/main_screen/coupon2.jpg',
-        couponContent: 'Grooming spa ưu đãi lên đến 45%',
-        couponValue: '45%',
-        center: 'Grooming',
-      ),
-      Coupon(
-        couponImage: 'assets/cus/main_screen/coupon3.jpg',
-        couponContent: 'Ú tim tìm boss ưu đã lên đến 50%',
-        couponValue: '50%',
-        center: 'Boss Ú',
-      ),
-      Coupon(
-        couponImage: 'assets/cus/main_screen/coupon4.jpg',
-        couponContent: 'Sen ơi ở đây có giảm giá 40% nhà gỗ lofe pet nè',
-        couponValue: '40%',
-        center: 'Lofe',
-      ),
-    ];
+    List<PCC> _pccList = Globals.pccList;
+    List<Pet> _petList = Globals.petList;
+    List<Coupon> _couponList = Globals.couponList;
+
     return Scaffold(
       appBar: UpAppBar(context),
       body: Material(
@@ -385,8 +319,6 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       child: Column(
                         children: [
                           SizedBox(height: _pageHeight * 0.02),
-                          Divider(thickness: 2),
-                          SizedBox(height: _pageHeight * 0.02),
                         ],
                       ),
                     );
@@ -425,13 +357,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
 
 Widget CaroselImage = Center(
   child: Carousel(
-    images: [
-      AssetImage('assets/cus/main_screen/slide1.jpg'),
-      AssetImage('assets/cus/main_screen/slide2.jpg'),
-      AssetImage('assets/cus/main_screen/slide3.jpg'),
-      AssetImage('assets/cus/main_screen/slide4.png'),
-      AssetImage('assets/cus/main_screen/slide5.jpg'),
-    ],
+    images: Globals.listSlideHome,
     autoplay: true,
     dotSize: 5,
     dotSpacing: 30,
