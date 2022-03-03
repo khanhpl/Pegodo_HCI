@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pegoda/MyLib/class/pet.dart';
 import 'package:pegoda/MyLib/models/show_pet_detail.dart';
