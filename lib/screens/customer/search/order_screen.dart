@@ -14,6 +14,8 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderScreenState extends State<OrderScreen> {
   List<Pet> _petList = Globals.petList;
+  var paymentValue;
+  List _listPayment = Globals.listPayment;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,34 @@ class _OrderScreenState extends State<OrderScreen> {
                 ),
               ),
             ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Container(
+        padding: EdgeInsets.fromLTRB(_pageWidth*0.03, 0, _pageWidth*0.03, 0),
+        height: _pageHeight*0.1,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Text(
+                  'Phương thức thanh toán:',
+                ),
+                Spacer(
+                ),
+                DropdownButton<String>(
+                  value: paymentValue,
+                  icon: Icon(Icons.keyboard_arrow_up),
+                  items: _listPayment
+                      .map<DropdownMenuItem<String>>(
+                      buildMenuPaymentItem)
+                      .toList(),
+                  onChanged: (paymentValue) => setState(
+                          () => this.paymentValue = paymentValue),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -132,11 +162,14 @@ class _OrderScreenState extends State<OrderScreen> {
                           DatePicker.showDateTimePicker(context,
                               showTitleActions: true,
                               minTime: DateTime.now(),
-                              maxTime: DateTime(2023, 12, 31), onChanged: (date) {
-                                print('change $date');
-                              }, onConfirm: (date) {
-                                print('confirm $date');
-                              }, currentTime: DateTime.now(), locale: LocaleType.vi);
+                              maxTime: DateTime(2023, 12, 31),
+                              onChanged: (date) {
+                            print('change $date');
+                          }, onConfirm: (date) {
+                            print('confirm $date');
+                          },
+                              currentTime: DateTime.now(),
+                              locale: LocaleType.vi);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -298,7 +331,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
               SizedBox(height: _pageHeight * 0.04),
               Container(
-                padding: EdgeInsets.only(left: _pageWidth*0.03),
+                padding: EdgeInsets.only(left: _pageWidth * 0.03),
                 alignment: Alignment.center,
                 width: _pageWidth,
                 height: _pageHeight * 0.1,
@@ -316,15 +349,15 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: _pageHeight*0.1),
+              SizedBox(height: _pageHeight * 0.1),
             ],
           ),
         ),
       ),
     );
   }
-  void _ChooseService(BuildContext context) {
 
+  void _ChooseService(BuildContext context) {
     var size = MediaQuery.of(context).size;
     showDialog(
       context: context,
@@ -334,7 +367,7 @@ class _OrderScreenState extends State<OrderScreen> {
           backgroundColor: Color.fromRGBO(0, 0, 0, 0),
           scrollable: true,
           content: Container(
-            padding: EdgeInsets.all(size.width*0.03),
+            padding: EdgeInsets.all(size.width * 0.03),
             width: size.width,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -343,15 +376,21 @@ class _OrderScreenState extends State<OrderScreen> {
             child: Column(
               children: [
                 ShowServiceItem(),
-                SizedBox(height: size.height*0.03),
+                SizedBox(height: size.height * 0.03),
                 ShowServiceItem(),
-                SizedBox(height: size.height*0.03),
+                SizedBox(height: size.height * 0.03),
                 ShowServiceItem(),
               ],
             ),
           ),
         );
       },
+    );
+  }
+  DropdownMenuItem<String> buildMenuPaymentItem(var item) {
+    return DropdownMenuItem(
+      value: item,
+      child: Text(item),
     );
   }
 }
