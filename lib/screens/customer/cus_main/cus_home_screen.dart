@@ -187,7 +187,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Đơn đặt hàng',
+                              'Lịch sử đặt hàng',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontWeight: FontWeight.w400),
                             ),
@@ -363,16 +363,23 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
 
                 ]),
                 SizedBox(height: _pageHeight * 0.03),
-                Container(
-                  constraints: BoxConstraints.expand(
-                    width: double.infinity,
-                    height: 250,
+                Row(children: [
+                  Container(
+                    child: Text(
+                      'Trung tâm đề xuất',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: _pageHeight * 0.03,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/cus/main_screen/shop.jpg'),
-                          fit: BoxFit.cover)),
-                ),
+                  SizedBox(width:_pageWidth * 0.03 ,),
+                  Image(
+                    image: AssetImage('assets/cus/main_screen/store.jpg'),
+                    height: _pageHeight * 0.06,
+                  )
+                ]),
                 SizedBox(height: _pageHeight * 0.03),
                 ListView.separated(
                   physics: NeverScrollableScrollPhysics(),
@@ -398,7 +405,23 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
 
                 //khuyến mãi
                 SizedBox(height: _pageHeight * 0.03),
-
+                Row(children: [
+                  Container(
+                    child: Text(
+                      'Khuyến mãi',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: _pageHeight * 0.03,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width:_pageWidth * 0.03 ,),
+                  Image(
+                    image: AssetImage('assets/cus/main_screen/khuyenmai.png'),
+                    height: _pageHeight * 0.06,
+                  )
+                ]),
                 Container(
                   height: _pageHeight * 0.35,
                   child: ListView.separated(
