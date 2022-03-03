@@ -109,7 +109,9 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       Column(
                         children: [
                           FlatButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/orderHistoryScreen');
+                            },
                             child: Image.asset(
                               'assets/cus/main_screen/orderhistory.png',
                               height: _pageWidth * 0.3 * 0.33,
@@ -121,7 +123,7 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              'Lịch sử đặt hàng',
+                              'Lịch sử đặt lịch',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontWeight: FontWeight.w400),
                             ),
