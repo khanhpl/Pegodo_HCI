@@ -50,16 +50,7 @@ class _NearestPCCScreenState extends State<NearestPCCScreen> {
                   scrollDirection: Axis.vertical,
                   itemCount: _pccList.length,
                   separatorBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: _pageWidth,
-                      child: Column(
-                        children: [
-                          SizedBox(height: _pageHeight * 0.02),
-                          Divider(thickness: 2),
-                          SizedBox(height: _pageHeight * 0.02),
-                        ],
-                      ),
-                    );
+                    return SizedBox(height: _pageHeight*0.02);
                   },
                   itemBuilder: (BuildContext context, int index) {
                     return ShowPCCItem(pcc: _pccList[index]);
