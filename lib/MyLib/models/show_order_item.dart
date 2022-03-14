@@ -42,10 +42,14 @@ class _ShowOrderItemState extends State<ShowOrderItem> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: size.height * 0.1,
-                child: Icon(
-                  Icons.bookmarks,
-                  size: size.width*0.08,
+                constraints: BoxConstraints.expand(
+                  width: 50,
+                  height: 50
+                ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage("https://i.pinimg.com/originals/23/59/7e/23597eae81350a4705644c58bdad7f6b.jpg")
+                  )
                 ),
               ),
               Container(

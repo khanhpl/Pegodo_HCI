@@ -73,19 +73,6 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                                     width: _pageHeight * 0.07,
                                     height: _pageHeight * 0.07,
                                   ),
-                            Positioned(
-                              right: -10,
-                              bottom: 0,
-                              child: SizedBox(
-                                width: 36,
-                                height: 36,
-                                child: TextButton(
-                                    style: flatButtonStyle,
-                                    onPressed: () {},
-                                    child: Image.asset(
-                                        "assets/cus/account_screen/iconGooglePlus.png")),
-                              ),
-                            )
                           ],
                         ),
                       ),
@@ -118,7 +105,7 @@ class _CusAccountScreenState extends State<CusAccountScreen> {
                                 child: Text(
                               "Thông tin cá nhân",
                               style: TextStyle(
-                                color: Colors.black,
+                                 color: Colors.black,
                                 fontSize: _pageHeight * 0.023,
                                 fontWeight: FontWeight.w500,
                               ),

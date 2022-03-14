@@ -8,6 +8,7 @@ import 'package:pegoda/screens/customer/cus_main/up_nav_bar.dart';
 import '../../../MyLib/constants.dart' as Constants;
 import '../../../MyLib/globals.dart' as Globals;
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:pegoda/screens/customer/cus_main/DetailDiscountScreen.dart';
 
 class CusHomeScreen extends StatefulWidget {
   @override
@@ -79,7 +80,6 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       //Trung tâm nổi bật
                       Column(
                         children: [
-
                           FlatButton(
                             onPressed: () {
                               Navigator.pushNamed(
@@ -110,7 +110,8 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                         children: [
                           FlatButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, '/orderHistoryScreen');
+                              Navigator.pushNamed(
+                                  context, '/orderHistoryScreen');
                             },
                             child: Image.asset(
                               'assets/cus/main_screen/orderhistory.png',
@@ -201,7 +202,9 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width:_pageWidth * 0.03 ,),
+                  SizedBox(
+                    width: _pageWidth * 0.03,
+                  ),
                   Image(
                     image: AssetImage('assets/cus/main_screen/service_ic.png'),
                     height: _pageHeight * 0.06,
@@ -210,7 +213,6 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
 
                 SizedBox(height: _pageHeight * 0.03),
                 Row(children: [
-
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -296,7 +298,6 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       ),
                     ]),
                   ),
-
                 ]),
                 SizedBox(height: _pageHeight * 0.03),
                 Row(children: [
@@ -310,7 +311,9 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width:_pageWidth * 0.03 ,),
+                  SizedBox(
+                    width: _pageWidth * 0.03,
+                  ),
                   Image(
                     image: AssetImage('assets/cus/main_screen/store.jpg'),
                     height: _pageHeight * 0.06,
@@ -350,7 +353,9 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(width:_pageWidth * 0.03 ,),
+                  SizedBox(
+                    width: _pageWidth * 0.03,
+                  ),
                   Image(
                     image: AssetImage('assets/cus/main_screen/khuyenmai.png'),
                     height: _pageHeight * 0.06,
@@ -367,7 +372,15 @@ class _CusHomeScreenState extends State<CusHomeScreen> {
                       return SizedBox(width: _pageWidth * 0.03);
                     },
                     itemBuilder: (BuildContext context, int index) {
-                      return ShowCouponOnHomeScreen(coupon: _couponList[index]);
+                      return GestureDetector(
+                        child:
+                            ShowCouponOnHomeScreen(coupon: _couponList[index]),
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context){
+                            return DetailDiscountScreen(coupon: _couponList[index]);
+                          }));
+                        },
+                      );
                     },
                   ),
                 ),

@@ -314,12 +314,14 @@ class _OrderScreenState extends State<OrderScreen> {
               Container(
                 child: Row(
                   children: [
-                    Text(
-                      'Tiêm phòng 4 bệnh Felocell - Pfizer',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: _pageHeight * 0.024,
-                        color: Colors.grey[800],
+                    Expanded(
+                      child: Text(
+                        'Tiêm phòng 4 bệnh Felocell - Pfizer',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: _pageHeight * 0.024,
+                          color: Colors.grey[800],
+                        ),
                       ),
                     ),
                     Spacer(),

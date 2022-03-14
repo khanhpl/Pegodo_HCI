@@ -110,11 +110,28 @@ class _ShowServiceDetailState extends State<ShowServiceDetail> {
                 ),
               ),
               SizedBox(height: _pageHeight * 0.03),
-              Text(
-                'Giá dịch vụ: '+service.ServicePrice+'đ',
-                style: TextStyle(
-                  fontSize: _pageHeight * 0.026,
-                  fontWeight: FontWeight.w500,
+              Text.rich(
+                TextSpan(
+                  children: <TextSpan>[
+                    new TextSpan(
+                        text: "Gia dịch vụ:" +   service.ServicePrice + "đ",
+                        style: new TextStyle(
+                          fontSize: _pageHeight * 0.022,
+                          fontWeight: FontWeight.w500,
+                        )
+                    ),
+                    new TextSpan(
+                      text: "700.000đ",
+                      style: new TextStyle(
+                        color: Colors.grey,
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: Colors.red,
+                        fontSize: _pageHeight * 0.022,
+                        fontWeight: FontWeight.w500,
+
+                      ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: _pageHeight * 0.03),

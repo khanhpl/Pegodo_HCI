@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pegoda/MyLib/globals.dart';
 import 'package:pegoda/MyLib/provider/google_sign_in_provider.dart';
 import 'package:pegoda/controllers/customer_main.dart';
 import 'package:pegoda/screens/customer/cus_account/cus_app_infor_screen.dart';
@@ -15,7 +16,8 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:pegoda/screens/welcome/register_screen.dart';
 import 'package:pegoda/screens/customer/cus_main/chat_screen.dart';
-
+import 'package:pegoda/screens/customer/cus_main/DetailDiscountScreen.dart';
+import 'package:pegoda/MyLib/class/coupon.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
