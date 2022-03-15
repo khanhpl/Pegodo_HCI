@@ -317,7 +317,36 @@ class ShowOrderDetail extends StatelessWidget {
                   ),
                   _checkCancelButton()
                       ? SizedBox(width: size.width * 0.1)
-                      : SizedBox(),
+                      : !_checkRatingButton() ? SizedBox() :
+                      Row(
+                        children: [
+                          SizedBox(width: size.width * 0.1),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(
+                                size.width * 0.03, 0, size.width * 0.03, 0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(25),
+                              border: Border.all(
+                                color: Color(0xff333333),
+                              ),
+                            ),
+                            child: FlatButton(
+                              child: Text(
+                                'Đánh giá',
+                                style: TextStyle(
+                                  color: Color(0xff333333),
+                                  fontSize: size.height * 0.024,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/ratingScreen');
+                              },
+                            ),
+                          )
+                        ],
+                      ),
                   _checkCancelButton()
                       ? Container(
                           padding: EdgeInsets.fromLTRB(
@@ -384,6 +413,14 @@ class ShowOrderDetail extends StatelessWidget {
   bool _checkCancelButton() {
     String orderStatus = orderReview.Status;
     if (orderStatus == "1" || orderStatus == "2") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  bool _checkRatingButton(){
+    String orderStatus = orderReview.Status;
+    if (orderStatus == "3") {
       return true;
     } else {
       return false;

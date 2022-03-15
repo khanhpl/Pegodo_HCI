@@ -7,6 +7,8 @@ import 'package:pegoda/screens/customer/cus_account/cus_app_infor_screen.dart';
 import 'package:pegoda/screens/customer/cus_account/cus_app_setting_screen.dart';
 import 'package:pegoda/screens/customer/cus_account/cus_personal_setting_screen.dart';
 import 'package:pegoda/screens/customer/cus_account/order_history_screen.dart';
+import 'package:pegoda/screens/customer/cus_account/rating_screen.dart';
+import 'package:pegoda/screens/customer/cus_account/rating_success_screen.dart';
 import 'package:pegoda/screens/customer/cus_main/neareast_pcc_screen.dart';
 import 'package:pegoda/screens/customer/cus_main/questions_screen.dart';
 import 'package:pegoda/screens/customer/pet/add_pet_screen.dart';
@@ -56,6 +58,8 @@ class MyApp extends StatelessWidget {
             '/orderSuccessScreen': (context) => OrderSuccessScreen(),
             '/cancelOrderScreen': (context) => CancelOrderScreen(),
             '/cancelOrderSuccessScreen': (context) => CancelOrderSuccessScreen(),
+            '/ratingScreen': (context) => RatingScreen(),
+            '/ratingSuccessScreen': (context) => RatingSuccessScreen(),
           },
           // home: WelcomeScreen(),
         ),

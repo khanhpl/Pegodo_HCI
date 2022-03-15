@@ -112,123 +112,45 @@ class _OrderScreenState extends State<OrderScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: _pageWidth,
-                decoration: BoxDecoration(
-                    color: _primaryColor,
-                    borderRadius: BorderRadius.circular(20)),
-                padding: EdgeInsets.fromLTRB(_pageHeight * 0.04,
-                    _pageHeight * 0.04, _pageHeight * 0.04, _pageHeight * 0.04),
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(
-                      _pageHeight * 0.04,
-                      _pageHeight * 0.04,
-                      _pageHeight * 0.04,
-                      _pageHeight * 0.04),
-                  decoration: BoxDecoration(
-                      color: _boxColor,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'ĐƠN VỊ THỰC HIỆN',
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: _pageHeight * 0.024,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(height: _pageHeight * 0.03),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: _pageWidth * 0.1,
-                            width: _pageWidth * 0.1,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/cus/search_screen/pet_homies_ic.jpg'),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: _pageWidth * 0.03),
-                          Text(
-                            'Pet Homies',
-                            style: TextStyle(
-                              fontSize: _pageHeight * 0.022,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: _pageHeight * 0.02),
-                      Container(
-                        width: _pageWidth,
-                        child: Text(
-                          pccAddress,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: _pageHeight * 0.02,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.grey[600],
+              FlatButton(
+                padding: EdgeInsets.all(0),
+                onPressed: () {
+                  setState(() {
+                    _chooseDateTime(context);
+                  });
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: Container(
+                        height: _pageWidth * 0.04,
+                        width: _pageWidth * 0.04,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                                'assets/cus/search_screen/calendar_ic.png'),
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
-                      SizedBox(height: _pageHeight * 0.02),
-                      Divider(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: _primaryColor,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    SizedBox(width: _pageWidth * 0.03),
+                    Text(
+                      'Chọn thời gian thực hiện',
+                      style: TextStyle(
                         color: Colors.grey[600],
-                        thickness: 2,
+                        fontSize: _pageHeight * 0.02,
+                        fontWeight: FontWeight.w500,
                       ),
-                      SizedBox(height: _pageHeight * 0.02),
-                      FlatButton(
-                        padding: EdgeInsets.all(0),
-                        onPressed: () {
-                          setState(() {
-                            _chooseDateTime(context);
-                          });
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Container(
-                                height: _pageWidth * 0.04,
-                                width: _pageWidth * 0.04,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/cus/search_screen/calendar_ic.png'),
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-                              padding: EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: _primaryColor,
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            SizedBox(width: _pageWidth * 0.03),
-                            Text(
-                              'Chọn thời gian thực hiện',
-                              style: TextStyle(
-                                color: Colors.grey[600],
-                                fontSize: _pageHeight * 0.02,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(height: _pageHeight * 0.04),
@@ -366,14 +288,6 @@ class _OrderScreenState extends State<OrderScreen> {
                 ],
               ),
               SizedBox(height: _pageHeight * 0.04),
-              Text(
-                'HÓA ĐƠN',
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: _pageHeight * 0.028,
-                ),
-              ),
-              SizedBox(height: _pageHeight * 0.03),
               Row(
                 children: [
                   Text(
@@ -563,7 +477,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         ),
                         SizedBox(width: _pageWidth * 0.03),
                         Text(
-                          _date,
+                          "Chọn ngày thực hiện",
                           style: TextStyle(
                             color: Colors.grey[600],
                             fontSize: _pageHeight * 0.02,
